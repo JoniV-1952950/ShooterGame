@@ -1,1 +1,2 @@
-# ShooterGame
+# ShootTheTarget
+Assignment for ARVR
