@@ -15,6 +15,8 @@ public class TargetScore : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         StopAllCoroutines();
+
+        location = gameObject.transform.position;
         Vector3 point = collision.GetContact(0).point;
         
         Vector3 relLoc = (point - location)*100;
@@ -33,7 +35,7 @@ public class TargetScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        location = gameObject.transform.position;
+        
     }        
 
     // Update is called once per frame
