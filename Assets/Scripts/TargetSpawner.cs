@@ -9,8 +9,6 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     private TextMeshPro scoreText;
     [SerializeField]
-    private TextMeshPro scoreBoard;
-    [SerializeField]
     private GameObject leftWall;
     [SerializeField]
     private GameObject rightWall;
@@ -21,7 +19,6 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     private int totaalTargets;
     private int beginTotaalTargets;
-    private int totaalScore;
 
     // Start is called before the first frame update
     void Start()
@@ -59,12 +56,6 @@ public class TargetSpawner : MonoBehaviour
     private void endGame()
     {
         totaalTargets = beginTotaalTargets;
-        if(totaalScore > PlayerPrefs.GetInt("highscore"))
-        {
-            PlayerPrefs.SetInt("highscore", totaalScore);
-            scoreBoard.text = "high score: " + totaalScore.ToString();
-        }
-        
         gameObject.SetActive(false);
     }
 
@@ -80,5 +71,10 @@ public class TargetSpawner : MonoBehaviour
             newTarget();
             
         }
+    }
+    
+    public void setSimTargets(System.Single targets)
+    {
+        targetAmount = (int) targets;
     }
 }

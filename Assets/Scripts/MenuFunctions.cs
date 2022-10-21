@@ -9,6 +9,10 @@ public class MenuFunctions : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI sliderText;
     [SerializeField]
+    private TextMeshProUGUI simTargetText;
+    [SerializeField]
+    private TextMeshPro scoreText;
+    [SerializeField]
     private GameObject menu;
     [SerializeField]
     private GameObject uiHelper;
@@ -33,6 +37,7 @@ public class MenuFunctions : MonoBehaviour
     public void startLevel()
     {
         SceneManager.LoadScene("Assets/Scenes/AimTraining.unity", LoadSceneMode.Single);
+        
     }
 
     public void startHomeScene()
@@ -46,6 +51,7 @@ public class MenuFunctions : MonoBehaviour
         menuActive = false;
         menu.SetActive(menuActive);
         uiHelper.SetActive(menuActive);
+        scoreText.text = "0";
     }
 
     public void setBulletSpeedString(System.Single speed)
@@ -54,5 +60,9 @@ public class MenuFunctions : MonoBehaviour
         
     }
 
+    public void setSimultaneousTargetString(System.Single simTargets)
+    {
+        simTargetText.text = "Simultaneous targets: " + simTargets.ToString();
+    }
 
 }
