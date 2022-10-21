@@ -9,6 +9,8 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     private TextMeshPro scoreText;
     [SerializeField]
+    private TextMeshPro scoreBoard;
+    [SerializeField]
     private GameObject leftWall;
     [SerializeField]
     private GameObject rightWall;
@@ -18,11 +20,14 @@ public class TargetSpawner : MonoBehaviour
     private int targetAmount;
     [SerializeField]
     private int totaalTargets;
+    private int beginTotaalTargets;
     private int totaalScore;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("highscore", 0);
+        beginTotaalTargets = totaalTargets;
     }
 
     private void newTarget()
@@ -53,7 +58,14 @@ public class TargetSpawner : MonoBehaviour
 
     private void endGame()
     {
-        UnityEngine.Object.Destroy(this.gameObject);
+        totaalTargets = beginTotaalTargets;
+        if(totaalScore > PlayerPrefs.GetInt("highscore"))
+        {
+            PlayerPrefs.SetInt("highscore", totaalScore);
+            scoreBoard.text = "high score: " + totaalScore.ToString();
+        }
+        
+        gameObject.SetActive(false);
     }
 
 
